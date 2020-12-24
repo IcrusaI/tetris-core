@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "lib": [ "es2015", "dom" ],
+    "outDir": "./lib",
+    "strict": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "utils": ["./src/utils"]
+    }
+  },
+  "include": [
+    "src",
+    "types/global.d.ts"
+  ],
+  "exclude":[
+    "node_modules",
+    "dist"
+  ]
+}

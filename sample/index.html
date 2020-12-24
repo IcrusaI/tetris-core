@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/dev/tetris-core.js"></script>
+</head>
+<body>
+<canvas height="500" width="250" id="board" style="border: black solid 1px">
+
+</canvas>
+<script type="text/javascript">
+    window.tetris = new TetrisCore();
+
+    const board = document.getElementById("board"),
+        ctx = board.getContext('2d');
+
+    const BLOCK_SIZE = 25;
+
+    tetris.on("updateBoard", (newBoard, oldBoard) => {
+        draw(newBoard);
+    })
+
+    draw(tetris.board);
+
+    tetris.start();
+
+    function draw(board) {
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, 250, 500);
+
+        for (const rowKey in board) {
+            const row = board[rowKey];
+
+            for (const colKey in row) {
+                const cell = row[colKey];
+
+                if (cell.type !== "emptyBlock") {
+                    ctx.fillStyle = "black";
+                    ctx.fillRect(colKey * BLOCK_SIZE, rowKey * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
